@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 
 @Component
 @RequiredArgsConstructor
-@Profile({"dev", "mysql"})
+@Profile({ "dev", "mysql" })
 public class DataInitializer implements CommandLineRunner {
 
     private final UserRepository userRepository;
@@ -21,9 +21,22 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        System.out.println("🔍 DataInitializer running...");
+
         // Check if admin user already exists
-        if (userRepository.findByUsername("admin").isEmpty()) {
+        var adminUser = userRepository.findByUsername("admin");
+        System.out.println("🔍 Admin user exists: " + adminUser.isPresent());
+
+        if (adminUser.isEmpty()) {
+            System.out.println("✨ Creating default users...");
             createDefaultUsers();
+        } else {
+            System.out.println("⚠️ Admin user already exists, recreating users with correct passwords...");
+            System.out.println(
+                    "📝 Existing admin: " + adminUser.get().getUsername() + " - " + adminUser.get().getFullName());
+
+            // For debugging - let's recreate users to ensure correct password encoding
+            recreateDefaultUsers();
         }
     }
 
@@ -68,5 +81,15 @@ public class DataInitializer implements CommandLineRunner {
         System.out.println("👤 Admin: admin / admin123");
         System.out.println("👤 Manager: manager / manager123");
         System.out.println("👤 Employee: employee / employee123");
+    }
+
+    private void recreateDefaultUsers() {
+        System.out.println("🔄 Recreating default users with correct passwords...");
+
+        // Delete existing users
+        userRepository.deleteAll();
+
+        // Create fresh users
+        createDefaultUsers();
     }
 }
