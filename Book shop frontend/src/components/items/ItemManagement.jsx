@@ -158,7 +158,7 @@ const ItemManagement = () => {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="form-select pl-10 min-w-40 bg-gray-800 text-white border border-gray-600 rounded-md focus:ring-2 focus:ring-blue-500"
+              className="form-select pl-10 min-w-40"
             >
               <option value="">All Categories</option>
               {categories.map(category => (

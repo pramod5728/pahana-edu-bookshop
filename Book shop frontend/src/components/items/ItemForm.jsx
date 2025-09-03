@@ -137,7 +137,6 @@ const ItemForm = ({ item, onSubmit, onCancel }) => {
           )}
         </div>
 
-
         {/* Stock Quantity */}
         <div className="form-group">
           <label htmlFor="stockQuantity" className="form-label">
