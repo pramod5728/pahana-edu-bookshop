@@ -126,3 +126,4 @@ npx tailwindcss init -p
 ```
 
 This modular structure makes the codebase maintainable, scalable, and easier to work with in a team environment. Each component has a single responsibility, and services are separated from the UI logic.
+
