@@ -44,7 +44,7 @@ const Navigation = () => {
 
   const isActivePath = (path) => {
     return location.pathname === path || 
-           (path !== '/dashboard' && location.pathname.startsWith(path));
+          (path !== '/dashboard' && location.pathname.startsWith(path));
   };
 
   return (
