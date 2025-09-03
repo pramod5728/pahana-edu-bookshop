@@ -16,7 +16,6 @@ const GlassCard = ({
     transition-all duration-300
     ${className}
   `;
-  
 
   return (
     <div 
