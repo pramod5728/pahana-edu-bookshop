@@ -69,7 +69,7 @@ npm run build
 ## Project Structure
 
 ```
-pahana-edu-billing/
+pahana-edu-bookshop/
 ├── public/
 │   ├── index.html
 │   ├── favicon.ico
